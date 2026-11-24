@@ -67,4 +67,4 @@ export const familyFor = (n: number): MobilePlan =>
 
 export const beelineUrl = (lang: string, slug: string) =>
   `https://beeline.uz/${lang}/products/tariffs/${slug}`;
-export const hambiUrl = (lang: string) => `https://hambi.uz/${lang}`;
+export const hambiUrl = () => "https://hambi.uz";

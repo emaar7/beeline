@@ -299,7 +299,7 @@ export default function AiAssistant({
                         </div>
                       )}
                       {m.cta === "hambi" && (
-                        <a href={hambiUrl(lang)} target="_blank" rel="noopener noreferrer" className="chat-anim mt-3 block animate-[pop_.4s_ease-out] rounded-full bg-yellow px-5 py-3 text-center text-sm font-bold text-ink transition hover:scale-[1.02]">{d.ctaHambi} ↗</a>
+                        <a href={hambiUrl()} target="_blank" rel="noopener noreferrer" className="chat-anim mt-3 block animate-[pop_.4s_ease-out] rounded-full bg-yellow px-5 py-3 text-center text-sm font-bold text-ink transition hover:scale-[1.02]">{d.ctaHambi} ↗</a>
                       )}
                       {m.cta === "home" && (
                         <Link href={`/${lang}/internet`} onClick={close} className="chat-anim mt-3 block animate-[pop_.4s_ease-out] rounded-full bg-yellow px-5 py-3 text-center text-sm font-bold text-ink transition hover:scale-[1.02]">{d.ctaHome} →</Link>
