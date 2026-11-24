@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --yellow: #ffd21e;
+  --ink: #0b0b0c;
+  --ink-2: #151517;
+  --paper: #f6f3ea;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-yellow: var(--yellow);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-paper: var(--paper);
+  --font-display: var(--font-display), "Arial Black", sans-serif;
+  --font-sans: var(--font-body), system-ui, sans-serif;
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+html { background: var(--ink); }
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--yellow); color: var(--ink); }
+
+.font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+
+.bee-stripes {
+  background: repeating-linear-gradient(
+    -45deg, var(--yellow) 0 18px, var(--ink) 18px 36px);
+}
+
+.word-mask { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .08em; }
+.word-mask > span { display: inline-block; will-change: transform; }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 28s linear infinite; }
+
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+
+input[type="range"] {
+  -webkit-appearance: none; appearance: none; height: 6px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--yellow) var(--p, 0%), #ffffff22 var(--p, 0%));
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 28px; height: 28px; border-radius: 999px;
+  background: var(--yellow); border: 6px solid var(--ink); box-shadow: 0 0 0 2px var(--yellow);
+  cursor: grab;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px; height: 16px; border-radius: 999px; background: var(--yellow);
+  border: 6px solid var(--ink); box-shadow: 0 0 0 2px var(--yellow); cursor: grab;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+@keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: none; } }
