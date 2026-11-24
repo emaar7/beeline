@@ -7,6 +7,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AiAssistant from "@/components/AiAssistant";
 
 const display = Unbounded({
   variable: "--font-display",
@@ -46,6 +47,7 @@ export default async function RootLayout({
         <Header lang={lang} d={d.nav} />
         <main>{children}</main>
         <Footer lang={lang} d={d.footer} />
+        <AiAssistant lang={lang} d={d.chat} t={d.tariffs} />
       </body>
     </html>
   );

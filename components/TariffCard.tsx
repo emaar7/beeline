@@ -16,18 +16,21 @@ export function MobileCard({ p, d, lang, className = "" }: { p: MobilePlan; d: D
           <h3 className="font-display text-2xl font-black">{p.name}</h3>
           {hot && <span className="rounded-full bg-ink px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-yellow">{d.popular}</span>}
         </div>
-        <p className={`mt-2 text-sm ${hot ? "text-ink/70" : "text-white/55"}`}>{d.tags[p.id]}</p>
-        <div className="font-display mt-10 text-[5.5rem] font-black leading-none">
-          {p.gb === Infinity ? "∞" : p.gb}
-          <span className="ml-2 text-2xl">{d.gb}</span>
+        <p className={`mt-2 text-sm ${hot ? "text-ink/70" : "text-white/55"}`}>{(d.tags as Record<string, string>)[p.id]}</p>
+        <div className="font-display mt-8 text-[5rem] font-black leading-none">
+          {p.gb === 0 ? fmtPrice(p.min) : p.gb === Infinity ? "∞" : p.gb}
+          <span className="ml-2 text-2xl">{p.gb === 0 ? d.min : d.gb}</span>
         </div>
         <ul className={`mt-6 space-y-2 text-sm ${hot ? "text-ink/80" : "text-white/70"}`}>
-          <li>{fmtPrice(p.min)} {d.min}</li>
+          {p.bonusGb && <li>{d.tasix.replace("{n}", String(p.bonusGb))}</li>}
+          <li>{p.min === Infinity ? d.unlimitedCalls : p.gb === 0 ? null : `${fmtPrice(p.min)} ${d.min}`}</li>
           <li>{fmtPrice(p.sms)} {d.sms}</li>
+          {p.numbers && <li className="font-semibold">{d.numbersUpTo.replace("{n}", String(p.numbers))}</li>}
         </ul>
       </div>
       <div>
         <div className="font-display text-2xl font-black">{fmtPrice(p.price)} <span className="text-xs font-medium opacity-60">{d.perMonth}</span></div>
+        {p.regularPrice && <p className="mt-1 text-xs opacity-60">{d.regular.replace("{price}", fmtPrice(p.regularPrice))}</p>}
         <Link href={`/${lang}/tariffs`} className={`mt-5 block rounded-full py-3.5 text-center text-sm font-bold transition ${hot ? "bg-ink text-yellow hover:bg-black" : "bg-yellow text-ink hover:scale-[1.02]"}`}>
           {d.connect}
         </Link>

@@ -105,7 +105,7 @@ export default function Hero({ lang, d }: { lang: Locale; d: Dict["hero"] }) {
       </div>
 
       {/* speedometer */}
-      <div className="fade-in absolute bottom-8 right-5 z-10 text-right md:bottom-12 md:right-14">
+      <div className="fade-in absolute bottom-28 right-5 z-10 text-right md:bottom-12 md:right-40">
         <div className="font-display text-[clamp(3rem,8vw,7rem)] font-black leading-none tabular-nums text-yellow">
           <span ref={counter}>0</span>
         </div>

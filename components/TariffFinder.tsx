@@ -30,7 +30,7 @@ export default function TariffFinder({ lang, d }: { lang: Locale; d: Dict["tarif
         <div className="mt-10 space-y-10">
           <label className="block">
             <div className="mb-4 flex justify-between text-sm"><span className="text-white/60">{d.finder.data}</span><span className="font-display text-xl font-bold text-yellow">{gb} {d.gb}</span></div>
-            <input type="range" min={1} max={100} value={gb} onChange={(e) => setGb(+e.target.value)} style={{ ["--p" as string]: pct(gb, 1, 100) }} className="w-full" />
+            <input type="range" min={0} max={100} value={gb} onChange={(e) => setGb(+e.target.value)} style={{ ["--p" as string]: pct(gb, 0, 100) }} className="w-full" />
           </label>
           <label className="block">
             <div className="mb-4 flex justify-between text-sm"><span className="text-white/60">{d.finder.minutes}</span><span className="font-display text-xl font-bold text-yellow">{fmtPrice(min)}</span></div>
@@ -43,7 +43,7 @@ export default function TariffFinder({ lang, d }: { lang: Locale; d: Dict["tarif
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-60">{d.finder.best}</p>
           <p key={plan.id} className="font-display mt-3 animate-[pop_.5s_ease-out] text-6xl font-black md:text-7xl">{plan.name}</p>
-          <p className="mt-2 text-sm opacity-70">{plan.gb === Infinity ? d.unlimited : `${plan.gb} ${d.gb}`} · {fmtPrice(plan.min)} {d.min}</p>
+          <p className="mt-2 text-sm opacity-70">{plan.gb === Infinity ? d.unlimited : `${plan.gb} ${d.gb}`} · {plan.min === Infinity ? d.unlimitedCalls : `${fmtPrice(plan.min)} ${d.min}`}</p>
         </div>
         <div className="mt-10 flex items-end justify-between gap-4">
           <div>
